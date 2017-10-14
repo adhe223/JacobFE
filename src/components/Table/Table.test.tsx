@@ -3,7 +3,6 @@ import Table, { TableProps } from './Table';
 import * as renderer from 'react-test-renderer';
 
 const fakeTableProps: TableProps = {
-  columnHeadings: ['Name', 'id', 'data'],
   listItems: [{
     'Name': 'Alex',
     'id': '0',

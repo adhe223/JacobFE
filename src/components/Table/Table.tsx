@@ -12,12 +12,15 @@ export interface TableRow {
 }
 
 export interface TableProps {
-  columnHeadings: string[];
   listItems: TableRow[];
 }
 
 const Table = (props: TableProps) => {
-  const headings = props.columnHeadings.map((heading, indx) => {
+  if (props.listItems.length === 0) {
+    return null;
+  }
+
+  const headings = Object.keys(props.listItems[0]).map((heading, indx) => {
     return <th key={'th-' + indx}>{heading}</th>;
   });
 
@@ -35,10 +38,14 @@ const Table = (props: TableProps) => {
 
   return (
     <table>
-      <tr>
-        {headings}
-      </tr>
-      {rows}
+      <thead>
+        <tr>
+          {headings}
+        </tr>
+      </thead>
+      <tbody>
+        {rows}
+      </tbody>
     </table>
   );
 };
