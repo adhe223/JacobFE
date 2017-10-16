@@ -4,7 +4,16 @@ import Sample from '../models/Sample';
 
 export interface StoreState {
   page: string;
-  customers: Customer[];
-  orders: Order[];
-  samples: Sample[];
+  customers: {
+    listItems: Customer[],
+    isFetching: boolean,
+  };
+  orders: {
+    listItems: Order[],
+    isFetching: boolean,
+  };
+  samples: {
+    listItems: Sample[],
+    isFetching: boolean,
+  };
 }

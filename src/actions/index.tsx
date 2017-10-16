@@ -1,18 +1,30 @@
-import Customers from '../models/Customer';
-import { CHANGE_CUSTOMERS } from '../constants';
+import Customer from '../models/Customer';
+import { FETCHING_CUSTOMERS, FETCHED_CUSTOMERS } from '../constants';
 
-export interface ChangeCustomers {
-  type: CHANGE_CUSTOMERS;
+export interface FetchingCustomers {
+  type: FETCHING_CUSTOMERS;
+}
+
+export interface FetchedCustomers {
+  type: FETCHED_CUSTOMERS;
   payload: {
-    customers: Customers[];
+    customers: Customer[],
   };
 }
 
-export type TableDataChange = ChangeCustomers;
+export type CustomerAction = FetchingCustomers | FetchedCustomers;
 
-export function changeCustomers(customers: Customers[]): ChangeCustomers {
+export function fetchingCustomers() {
   return {
-    type: CHANGE_CUSTOMERS,
-    payload: {customers},
+    type: FETCHING_CUSTOMERS
+  };
+}
+
+export function fetchedCustomers(customers: Customer[]) {
+  return {
+    type: FETCHED_CUSTOMERS,
+    payload: {
+      customers,
+    },
   };
 }

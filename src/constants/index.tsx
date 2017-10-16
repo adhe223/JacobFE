@@ -1,2 +1,10 @@
-export const CHANGE_CUSTOMERS = 'CHANGE_CUSTOMERS';
-export type CHANGE_CUSTOMERS = typeof CHANGE_CUSTOMERS;
+export const SET_CUSTOMERS = 'SET_CUSTOMERS';
+export type SET_CUSTOMERS = typeof SET_CUSTOMERS;
+
+export const FETCHING_CUSTOMERS = 'FETCHING_CUSTOMERS';
+export type FETCHING_CUSTOMERS = typeof FETCHING_CUSTOMERS;
+
+export const FETCHED_CUSTOMERS = 'FETCHED_CUSTOMERS';
+export type FETCHED_CUSTOMERS = typeof FETCHED_CUSTOMERS;
+
+export const baseApiUrl: string = 'http://192.168.29.224:3000/';
