@@ -5,6 +5,11 @@ import Table from '../Table/Table';
 const logo = require('../../logo.svg');
 
 class App extends React.Component {
+  handleClick() {
+    // TODO
+    // fetchCustomers();
+  }
+
   render() {
     const tableProps = [
       {
@@ -25,6 +30,9 @@ class App extends React.Component {
           <h2>Welcome to React</h2>
         </div>
         <Table listItems={tableProps} />
+        <button onClick={this.handleClick}>
+          Fetch Customers
+        </button>
       </div>
     );
   }
