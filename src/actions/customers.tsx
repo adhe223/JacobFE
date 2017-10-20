@@ -24,7 +24,25 @@ export function fetchedCustomers(customers: Customer[]) {
   return {
     type: FETCHED_CUSTOMERS,
     payload: {
-      customers,
+      customers
     },
+  };
+}
+
+export function fetchCustomers() {
+  return (dispatch: any) => {
+    dispatch(fetchingCustomers());
+
+    const url = '';
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          // do something
+        }
+        return response;
+      })
+      .then((response) => response.json())
+      .then((customers) => dispatch(fetchedCustomers(customers)))
+      .catch(() => {});
   };
 }
