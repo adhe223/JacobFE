@@ -1,39 +1,42 @@
-import { StoreState } from '../types';
+import Customer from '../models/Customer';
 import { FETCHING_CUSTOMERS, FETCHED_CUSTOMERS } from '../constants';
 
-const initialState = {
-  page: '',
+export interface CustomerState {
   customers: {
-    listItems: [],
-    isFetching: false
-  },
-  orders: {
-    listItems: [],
-    isFetching: false
-  },
-  samples: {
+    listItems: Customer[];
+    isFetching: boolean;
+  };
+}
+const initialState = {
+  customers: {
     listItems: [],
     isFetching: false
   }
 };
 
-export function customers(state: StoreState = initialState, action: any): StoreState {
+export function customers(
+  state: CustomerState = initialState,
+  action: {
+    type: string;
+    payload: {
+      customers: Customer[];
+    };
+  }
+): CustomerState {
   switch (action.type) {
     case FETCHING_CUSTOMERS:
       return {
-        ...state,
         customers: {
           ...state.customers,
-          isFetching: true,
-        },
+          isFetching: true
+        }
       };
     case FETCHED_CUSTOMERS:
       return {
-        ...state,
         customers: {
           listItems: action.payload.customers,
-          isFetching: false,
-        },
+          isFetching: false
+        }
       };
     default:
       return state;

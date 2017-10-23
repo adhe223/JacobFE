@@ -1,7 +1,7 @@
 import { baseApiUrl } from './constants';
 
 const fetchCustomers = () => {
-  const url = baseApiUrl + 'customers';
+  const url = baseApiUrl + '/customers';
 
   return fetch(url);
 };

@@ -4,25 +4,17 @@ import Table from '../Table/Table';
 
 const logo = require('../../logo.svg');
 
-class App extends React.Component {
+export interface AppProps {
+  fetchCustomers: () => {};
+}
+
+class App extends React.Component<AppProps> {
   handleClick() {
     // TODO
-    // fetchCustomers();
+    this.props.fetchCustomers();
   }
 
   render() {
-    const tableProps = [
-      {
-        'Name': 'Alex',
-        'id': '1',
-        'data': 'science',
-      }, {
-        'Name': 'Alex',
-        'id': '1',
-        'data': 'science',
-      }
-    ];
-
     return (
       <div className="App">
         <div className="App-header">
