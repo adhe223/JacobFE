@@ -1,1 +1,2 @@
-export { default } from './CustomersPageContainer';
+export { default } from './CustomersPage';
+export * from './CustomersPage';
