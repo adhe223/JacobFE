@@ -1,14 +1,15 @@
-import { connect } from 'react-redux';
+import { connect, Dispatch } from 'react-redux';
 import { fetchCustomers } from '../actions/customers';
 import App from '../components/App/App';
+import { StoreState } from '../types';
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: StoreState) => {
   return {
     customers: state.customers
   };
 };
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch<{}>) => {
   return {
     fetchCustomers: () => dispatch(fetchCustomers())
   };
