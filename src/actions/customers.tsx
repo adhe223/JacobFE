@@ -35,33 +35,6 @@ export function fetchCustomers() {
   return (dispatch: Dispatch<CustomerAction>): void => {
     dispatch(fetchingCustomers());
 
-    // const testCustomers = [
-    //   {
-    //     customerId: 1,
-    //     firstName: 'Alex',
-    //     lastName: 'Henry',
-    //     companyName: 'AH',
-    //     streetAddress: '123 Street',
-    //     streetAddress2: 'Apt 123',
-    //     city: 'Seattle',
-    //     state: 'WA',
-    //     zip: '99999',
-    //     phoneNumber: '123-456-7890',
-    //   }, {
-    //     customerId: 2,
-    //     firstName: 'Cindy',
-    //     lastName: 'Han',
-    //     companyName: 'CH',
-    //     streetAddress: '123 Street',
-    //     streetAddress2: 'Apt 123',
-    //     city: 'Seattle',
-    //     state: 'WA',
-    //     zip: '99999',
-    //     phoneNumber: '123-456-7890',
-    //   }
-    // ];
-    // return dispatch(fetchedCustomers(testCustomers));
-
     const url = baseApiUrl + 'customers';
     fetch(url)
       .then((response) => {
