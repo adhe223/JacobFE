@@ -2,13 +2,16 @@ import * as React from 'react';
 import './App.css';
 import CustomersPage from '../CustomersPage';
 import OrdersPage from '../OrdersPage';
+import SamplesPage from '../SamplesPage';
 import { CustomersPageProps } from '../CustomersPage';
 import { OrdersPageProps } from '../OrdersPage';
+import { SamplesPageProps } from '../SamplesPage';
 import { Pages } from '../../constants';
 
 export interface AppProps {
   customerProps: CustomersPageProps;
   orderProps: OrdersPageProps;
+  sampleProps: SamplesPageProps;
   page: Pages;
 }
 
@@ -28,7 +31,7 @@ class App extends React.Component<AppProps> {
         pageContent = <OrdersPage {...this.props.orderProps}/>;
         break;
       case Pages.samples:
-        // pageContent = <SamplesPage {...this.props.sampleProps}/>;
+        pageContent = <SamplesPage {...this.props.sampleProps}/>;
         break;
       default:
     }
@@ -44,6 +47,7 @@ class App extends React.Component<AppProps> {
   private initialDataFetch() {
     this.props.customerProps.fetchCustomers();
     this.props.orderProps.fetchOrders();
+    this.props.sampleProps.fetchSamples();
   }
 }
 

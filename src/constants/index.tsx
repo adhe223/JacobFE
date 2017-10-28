@@ -10,6 +10,12 @@ export type FETCHING_ORDERS = typeof FETCHING_ORDERS;
 export const FETCHED_ORDERS = 'FETCHED_ORDERS';
 export type FETCHED_ORDERS = typeof FETCHED_ORDERS;
 
+export const FETCHING_SAMPLES = 'FETCHING_SAMPLES';
+export type FETCHING_SAMPLES = typeof FETCHING_SAMPLES;
+
+export const FETCHED_SAMPLES = 'FETCHED_SAMPLES';
+export type FETCHED_SAMPLES = typeof FETCHED_SAMPLES;
+
 export enum Pages {
   customers,
   orders,

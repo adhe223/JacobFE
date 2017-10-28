@@ -11,7 +11,7 @@ export interface CustomersPageProps {
 const CustomersPage = (props: CustomersPageProps) => {
     return (
         <div className="CustomersPage-Container">
-            <h1>Customers</h1>
+            <h3>Customers</h3>
             <Table {...props.tableProps}  />
             <button onClick={props.fetchCustomers}>Fetch Customers</button>
         </div>
