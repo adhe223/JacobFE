@@ -1,7 +1,7 @@
-import Customer from '../models/Customer';
-import { FETCHING_CUSTOMERS, FETCHED_CUSTOMERS } from '../constants';
+import Customer from '../../models/Customer';
+import { FETCHING_CUSTOMERS, FETCHED_CUSTOMERS } from '../../constants';
 import { Dispatch } from 'react-redux';
-import { baseApiUrl } from '../constants';
+import { baseApiUrl } from '../../constants';
 
 export interface FetchingCustomers {
   type: FETCHING_CUSTOMERS;

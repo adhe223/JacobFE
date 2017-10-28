@@ -1,16 +1,19 @@
 import { connect, Dispatch } from 'react-redux';
 import { StoreState } from '../../types';
-import { fetchCustomers } from '../../actions/customers';
+import { fetchCustomers } from '../../data/actions/customers';
+import { getCustomers, customersFetching } from '../../data/selectors/customers';
+import { getPage } from '../../data/selectors/app';
 import App from './App';
 
 const mapStateToProps = (state: StoreState) => {
   return {
     customerProps: {
       tableProps: {
-        listItems: state.customers.listItems as any,
+        listItems: getCustomers(state),
       },
-      isFetching: state.customers.isFetching,
+      isFetching: customersFetching(state),
     },
+    page: getPage(state),
   };
 };
 
@@ -32,6 +35,7 @@ const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any) => {
 
   return {
     customerProps,
+    page: stateProps.page,
   };
 };
 

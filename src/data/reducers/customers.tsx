@@ -1,5 +1,5 @@
-import Customer from '../models/Customer';
-import { FETCHING_CUSTOMERS, FETCHED_CUSTOMERS } from '../constants';
+import Customer from '../../models/Customer';
+import { FETCHING_CUSTOMERS, FETCHED_CUSTOMERS } from '../../constants';
 
 export interface CustomerState {
   listItems: Customer[];
