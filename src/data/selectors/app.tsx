@@ -1,7 +1,7 @@
 import { StoreState } from '../../types';
 
 const getPage = (state: StoreState) => {
-  return state.page;
+  return state.app.page;
 };
 
 export {

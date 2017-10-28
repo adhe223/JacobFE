@@ -1,11 +1,12 @@
 import { PageAction } from '../actions/app';
+import { Pages } from '../../constants';
 
 export interface AppState {
-  page: string;
+  page: Pages;
 }
 
 const initialState = {
-  page: 'customer'
+  page: Pages.customers,
 };
 
 export function app(state: AppState = initialState, action: PageAction): AppState {

@@ -1,29 +1,33 @@
 import * as React from 'react';
 import './App.css';
 import CustomersPage from '../CustomersPage';
+import OrdersPage from '../OrdersPage';
 import { CustomersPageProps } from '../CustomersPage';
+import { OrdersPageProps } from '../OrdersPage';
+import { Pages } from '../../constants';
 
 export interface AppProps {
   customerProps: CustomersPageProps;
-  page: string;
+  orderProps: OrdersPageProps;
+  page: Pages;
 }
 
 class App extends React.Component<AppProps> {
   componentDidMount() {
-    this.props.customerProps.fetchCustomers();
+    this.initialDataFetch();
   }
 
   render() {
     let pageContent;
 
     switch (this.props.page) {
-      case 'customers':
+      case Pages.customers:
         pageContent = <CustomersPage {...this.props.customerProps}/>;
         break;
-      case 'orders':
-        // pageContent = <OrdersPage {...this.props.orderProps}/>;
+      case Pages.orders:
+        pageContent = <OrdersPage {...this.props.orderProps}/>;
         break;
-      case 'samples':
+      case Pages.samples:
         // pageContent = <SamplesPage {...this.props.sampleProps}/>;
         break;
       default:
@@ -31,9 +35,15 @@ class App extends React.Component<AppProps> {
 
     return (
       <div className="App">
-        <CustomersPage {...this.props.customerProps}/>
+        <h1>Lab Stuff</h1>
+        {pageContent}
       </div>
     );
+  }
+
+  private initialDataFetch() {
+    this.props.customerProps.fetchCustomers();
+    this.props.orderProps.fetchOrders();
   }
 }
 

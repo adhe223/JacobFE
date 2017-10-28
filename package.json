@@ -26,6 +26,7 @@
     "@types/react-dom": "^16.0.1",
     "@types/react-test-renderer": "^16.0.0",
     "enzyme": "^3.1.0",
-    "react-addons-test-utils": "^15.6.2"
+    "react-addons-test-utils": "^15.6.2",
+    "redux-devtools-extension": "^2.13.2"
   }
 }
