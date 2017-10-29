@@ -16,18 +16,21 @@ const mapStateToProps = (state: StoreState) => {
         listItems: getCustomers(state),
       },
       isFetching: customersFetching(state),
+      pageTitle: 'Customers', // Need to fix this by using ownProps somehow
     },
     orderProps: {
       tableProps: {
         listItems: getOrders(state),
       },
       isFetching: ordersFetching(state),
+      pageTitle: 'Orders', // Need to fix this by using ownProps somehow
     },
     sampleProps: {
       tableProps: {
         listItems: getSamples(state),
       },
       isFetching: samplesFetching(state),
+      pageTitle: 'Samples', // Need to fix this by using ownProps somehow
     },
     page: getPage(state),
   };
@@ -36,13 +39,13 @@ const mapStateToProps = (state: StoreState) => {
 const mapDispatchToProps = (dispatch: Dispatch<any>) => {
   return {
     customerProps: {
-      fetchCustomers: () => dispatch(fetchCustomers())
+      fetchData: () => dispatch(fetchCustomers())
     },
     orderProps: {
-      fetchOrders: () => dispatch(fetchOrders())
+      fetchData: () => dispatch(fetchOrders())
     },
     sampleProps: {
-      fetchSamples: () => dispatch(fetchSamples())
+      fetchData: () => dispatch(fetchSamples())
     },
   };
 };

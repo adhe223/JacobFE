@@ -1,17 +1,13 @@
 import * as React from 'react';
 import './App.css';
-import CustomersPage from '../CustomersPage';
-import OrdersPage from '../OrdersPage';
-import SamplesPage from '../SamplesPage';
-import { CustomersPageProps } from '../CustomersPage';
-import { OrdersPageProps } from '../OrdersPage';
-import { SamplesPageProps } from '../SamplesPage';
+import DataPage from '../DataPage';
+import { DataPageProps } from '../DataPage';
 import { Pages } from '../../constants';
 
 export interface AppProps {
-  customerProps: CustomersPageProps;
-  orderProps: OrdersPageProps;
-  sampleProps: SamplesPageProps;
+  customerProps: DataPageProps;
+  orderProps: DataPageProps;
+  sampleProps: DataPageProps;
   page: Pages;
 }
 
@@ -25,13 +21,13 @@ class App extends React.Component<AppProps> {
 
     switch (this.props.page) {
       case Pages.customers:
-        pageContent = <CustomersPage {...this.props.customerProps}/>;
+        pageContent = <DataPage {...this.props.customerProps}/>;
         break;
       case Pages.orders:
-        pageContent = <OrdersPage {...this.props.orderProps}/>;
+        pageContent = <DataPage {...this.props.orderProps}/>;
         break;
       case Pages.samples:
-        pageContent = <SamplesPage {...this.props.sampleProps}/>;
+        pageContent = <DataPage {...this.props.sampleProps}/>;
         break;
       default:
     }
@@ -45,9 +41,10 @@ class App extends React.Component<AppProps> {
   }
 
   private initialDataFetch() {
-    this.props.customerProps.fetchCustomers();
-    this.props.orderProps.fetchOrders();
-    this.props.sampleProps.fetchSamples();
+    // This is hacky to reach into each props and call the fetch method
+    this.props.customerProps.fetchData();
+    this.props.orderProps.fetchData();
+    this.props.sampleProps.fetchData();
   }
 }
 
