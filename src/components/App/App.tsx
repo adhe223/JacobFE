@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
 import DataPage from '../DataPage';
+import NavBar from '../NavBar';
 import { DataPageProps } from '../DataPage';
 import { Pages } from '../../constants';
 
@@ -32,9 +33,23 @@ class App extends React.Component<AppProps> {
       default:
     }
 
+    const navBarProps = {
+      navItems: [
+        {
+          displayText: 'Test 1',
+          onClick: () => { return; },
+        },
+        {
+          displayText: 'Test 2',
+          onClick: () => { return; },
+        },
+      ],
+    };
+
     return (
       <div className="App">
         <h1>Lab Stuff</h1>
+        <NavBar {...navBarProps}/>
         {pageContent}
       </div>
     );
