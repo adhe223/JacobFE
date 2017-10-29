@@ -1,9 +1,12 @@
 import Customer from '../models/Customer';
 import Order from '../models/Order';
 import Sample from '../models/Sample';
+import { Pages } from '../constants';
 
 export interface StoreState {
-  page: string;
+  app: {
+    page: Pages;
+  };
   customers: {
     listItems: Customer[],
     isFetching: boolean,

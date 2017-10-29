@@ -1,4 +1,4 @@
-import { StoreState } from '../types';
+import { StoreState } from '../../types';
 
 const getCustomers = (state: StoreState) => {
     return state.customers.listItems;

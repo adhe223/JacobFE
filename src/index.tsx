@@ -2,8 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers';
+import rootReducer from './data/reducers';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
@@ -13,7 +14,9 @@ const initialState = {};
 const store = createStore(
   rootReducer,
   initialState,
-  applyMiddleware(thunk)
+  composeWithDevTools(
+    applyMiddleware(thunk),
+  )
 );
 
 ReactDOM.render(
