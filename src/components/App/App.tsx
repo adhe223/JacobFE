@@ -3,6 +3,7 @@ import './App.css';
 import DataPage from '../DataPage';
 import { DataPageProps } from '../DataPage';
 import { Pages } from '../../constants';
+import SearchLanding from '../SearchLanding';
 
 export interface AppProps {
   customerProps: DataPageProps;
@@ -18,6 +19,7 @@ class App extends React.Component<AppProps> {
 
   render() {
     let pageContent;
+    const searchImage = require('./magnifying-glass.svg');
 
     switch (this.props.page) {
       case Pages.customers:
@@ -34,8 +36,7 @@ class App extends React.Component<AppProps> {
 
     return (
       <div className="App">
-        <h1>Lab Stuff</h1>
-        {pageContent}
+        <SearchLanding searchTerm="Apple" image={searchImage} />
       </div>
     );
   }
