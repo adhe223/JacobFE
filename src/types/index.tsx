@@ -1,11 +1,11 @@
 import Customer from '../models/Customer';
 import Order from '../models/Order';
 import Sample from '../models/Sample';
-import { Pages } from '../constants';
+import { Page } from '../constants';
 
 export interface StoreState {
   app: {
-    page: Pages;
+    page: Page;
   };
   customers: {
     listItems: Customer[],

@@ -16,7 +16,8 @@ export type FETCHING_SAMPLES = typeof FETCHING_SAMPLES;
 export const FETCHED_SAMPLES = 'FETCHED_SAMPLES';
 export type FETCHED_SAMPLES = typeof FETCHED_SAMPLES;
 
-export enum Pages {
+export enum Page {
+  home,
   customers,
   orders,
   samples,

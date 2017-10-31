@@ -1,15 +1,15 @@
-import { Pages } from '../../constants';
+import { Page } from '../../constants';
 
 export interface SetPage {
   type: 'SET_PAGE';
   payload: {
-    page: Pages;
+    page: Page;
   };
 }
 
 export type PageAction = SetPage;
 
-export function setPage(page: Pages): SetPage {
+export function setPage(page: Page): SetPage {
   return {
     type: 'SET_PAGE',
     payload: {

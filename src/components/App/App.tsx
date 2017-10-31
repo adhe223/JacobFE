@@ -3,13 +3,14 @@ import './App.css';
 import DataPage from '../DataPage';
 import NavBar from '../NavBar';
 import { DataPageProps } from '../DataPage';
-import { Pages } from '../../constants';
+import { Page } from '../../constants';
 
 export interface AppProps {
-  customerProps: DataPageProps;
-  orderProps: DataPageProps;
-  sampleProps: DataPageProps;
-  page: Pages;
+  customerData: DataPageProps;
+  orderData: DataPageProps;
+  sampleData: DataPageProps;
+  setPage: (page: Page) => void;
+  page: Page;
 }
 
 class App extends React.Component<AppProps> {
@@ -19,37 +20,30 @@ class App extends React.Component<AppProps> {
 
   render() {
     let pageContent;
+    const navItems = [
+      'Home',
+      'Customers',
+      'Orders',
+      'Samples',
+    ];
 
     switch (this.props.page) {
-      case Pages.customers:
-        pageContent = <DataPage {...this.props.customerProps}/>;
+      case Page.customers:
+        pageContent = <DataPage {...this.props.customerData} pageTitle="Customers" />;
         break;
-      case Pages.orders:
-        pageContent = <DataPage {...this.props.orderProps}/>;
+      case Page.orders:
+        pageContent = <DataPage {...this.props.orderData} pageTitle="Orders" />;
         break;
-      case Pages.samples:
-        pageContent = <DataPage {...this.props.sampleProps}/>;
+      case Page.samples:
+        pageContent = <DataPage {...this.props.sampleData} pageTitle="Samples" />;
         break;
       default:
     }
 
-    const navBarProps = {
-      navItems: [
-        {
-          displayText: 'Test 1',
-          onClick: () => { return; },
-        },
-        {
-          displayText: 'Test 2',
-          onClick: () => { return; },
-        },
-      ],
-    };
-
     return (
       <div className="App">
         <h1>Lab Stuff</h1>
-        <NavBar {...navBarProps}/>
+        <NavBar navItems={navItems} setPage={this.props.setPage}/>
         {pageContent}
       </div>
     );
@@ -57,9 +51,9 @@ class App extends React.Component<AppProps> {
 
   private initialDataFetch() {
     // This is hacky to reach into each props and call the fetch method
-    this.props.customerProps.fetchData();
-    this.props.orderProps.fetchData();
-    this.props.sampleProps.fetchData();
+    this.props.customerData.fetchData();
+    this.props.orderData.fetchData();
+    this.props.sampleData.fetchData();
   }
 }
 

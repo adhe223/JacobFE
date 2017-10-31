@@ -14,7 +14,6 @@ const CustomersPage = (props: DataPageProps) => {
         <div className="DataPage-Container">
             <h3>{props.pageTitle}</h3>
             <Table {...props.tableProps}  />
-            <button onClick={props.fetchData}>Fetch {props.pageTitle}</button>
         </div>
     );
 };

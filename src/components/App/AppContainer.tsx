@@ -7,30 +7,29 @@ import { getCustomers, customersFetching } from '../../data/selectors/customers'
 import { getOrders, ordersFetching } from '../../data/selectors/orders';
 import { getSamples, samplesFetching } from '../../data/selectors/samples';
 import { getPage } from '../../data/selectors/app';
+import { setPage } from '../../data/actions/app';
+import { Page } from '../../constants';
 import App from './App';
 
 const mapStateToProps = (state: StoreState) => {
   return {
-    customerProps: {
+    customerData: {
       tableProps: {
         listItems: getCustomers(state),
       },
       isFetching: customersFetching(state),
-      pageTitle: 'Customers', // Need to fix this by using ownProps somehow
     },
-    orderProps: {
+    orderData: {
       tableProps: {
         listItems: getOrders(state),
       },
       isFetching: ordersFetching(state),
-      pageTitle: 'Orders', // Need to fix this by using ownProps somehow
     },
-    sampleProps: {
+    sampleData: {
       tableProps: {
         listItems: getSamples(state),
       },
       isFetching: samplesFetching(state),
-      pageTitle: 'Samples', // Need to fix this by using ownProps somehow
     },
     page: getPage(state),
   };
@@ -38,43 +37,47 @@ const mapStateToProps = (state: StoreState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => {
   return {
-    customerProps: {
+    customerData: {
       fetchData: () => dispatch(fetchCustomers())
     },
-    orderProps: {
+    orderData: {
       fetchData: () => dispatch(fetchOrders())
     },
-    sampleProps: {
+    sampleData: {
       fetchData: () => dispatch(fetchSamples())
     },
+    setPage: (page: Page) => {
+      dispatch(setPage(page));
+    }
   };
 };
 
 const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any) => {
-  const customerProps = Object.assign(
+  const customerData = Object.assign(
     {},
-    stateProps.customerProps,
-    dispatchProps.customerProps,
-    ownProps.customerProps
+    stateProps.customerData,
+    dispatchProps.customerData,
+    ownProps.customerData
   );
-  const orderProps = Object.assign(
+  const orderData = Object.assign(
     {},
-    stateProps.orderProps,
-    dispatchProps.orderProps,
-    ownProps.orderProps
+    stateProps.orderData,
+    dispatchProps.orderData,
+    ownProps.orderData
   );
-  const sampleProps = Object.assign(
+  const sampleData = Object.assign(
     {},
-    stateProps.sampleProps,
-    dispatchProps.sampleProps,
-    ownProps.sampleProps
+    stateProps.sampleData,
+    dispatchProps.sampleData,
+    ownProps.sampleData
   );
 
   return {
-    customerProps,
-    orderProps,
-    sampleProps,
+    customerData,
+    orderData,
+    sampleData,
     page: stateProps.page,
+    setPage: dispatchProps.setPage,
   };
 };
 
