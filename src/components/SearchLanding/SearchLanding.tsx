@@ -1,18 +1,49 @@
 import * as React from 'react';
 import './SearchLanding.css';
+import SearchLandingResults from './SearchLandingResultsContainer';
+import Customer from '../../models/Customer';
 
-const SearchLanding = (
-  props: {
-    searchTerm: string,
-    image: string,
+export interface SearchLandingState {
+  searchTerm: string;
+  searchResults: Customer[];
+}
+
+export default class SearchLanding extends React.Component<{
+  fetchCustomersByCompany: (searchTerm: string) => void,
+}, SearchLandingState> {
+  constructor() {
+    super();
+    this.state = {
+      searchTerm: '',
+      searchResults: [],
+    };
   }
-) => {
-  return (
-    <div className="search-landing">
-      <img className="search-image" width="40px" height="80px" src={props.image} alt="Magnifying Glass" />
-      <div className="search-text" contentEditable={true}>{props.searchTerm}</div>
-    </div>
-  );
-};
 
-export default SearchLanding;
+  render() {
+    return (
+      <div className="search-landing">
+        <img
+          className="search-image"
+          width="40px"
+          height="80px"
+          src={require('./magnifying-glass.svg')}
+          alt="Magnifying Glass"
+        />
+        <input type="text" onChange={this.onSearchChange} />
+        <SearchLandingResults />
+      </div>
+    );
+  }
+
+  private onSearchChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = evt.currentTarget.value;
+    this.setState({
+      searchTerm,
+    });
+    this.fetchResults(searchTerm);
+  }
+
+  private fetchResults(searchTerm: string) {
+    this.props.fetchCustomersByCompany(searchTerm);
+  }
+}

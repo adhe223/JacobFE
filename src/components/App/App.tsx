@@ -6,6 +6,7 @@ import { Pages } from '../../constants';
 import SearchLanding from '../SearchLanding';
 
 export interface AppProps {
+  fetchCustomersByCompany: (searchTerm: string) => void;
   customerProps: DataPageProps;
   orderProps: DataPageProps;
   sampleProps: DataPageProps;
@@ -13,14 +14,8 @@ export interface AppProps {
 }
 
 class App extends React.Component<AppProps> {
-  componentDidMount() {
-    this.initialDataFetch();
-  }
-
   render() {
     let pageContent;
-    const searchImage = require('./magnifying-glass.svg');
-
     switch (this.props.page) {
       case Pages.customers:
         pageContent = <DataPage {...this.props.customerProps}/>;
@@ -36,16 +31,11 @@ class App extends React.Component<AppProps> {
 
     return (
       <div className="App">
-        <SearchLanding searchTerm="Apple" image={searchImage} />
+        <SearchLanding
+          fetchCustomersByCompany={this.props.fetchCustomersByCompany}
+        />
       </div>
     );
-  }
-
-  private initialDataFetch() {
-    // This is hacky to reach into each props and call the fetch method
-    this.props.customerProps.fetchData();
-    this.props.orderProps.fetchData();
-    this.props.sampleProps.fetchData();
   }
 }
 

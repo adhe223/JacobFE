@@ -2,7 +2,7 @@ export default interface Customer {
   customerId: number;
   firstName: string;
   lastName: string;
-  companyName: string | null;
+  companyName: string;
   streetAddress: string;
   streetAddress2: string | null;
   city: string;

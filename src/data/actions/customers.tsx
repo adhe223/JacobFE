@@ -49,3 +49,22 @@ export function fetchCustomers() {
       });
   };
 }
+
+export function fetchCustomersByCompany(searchTerm: string) {
+  return (dispatch: Dispatch<CustomerAction>): void => {
+    dispatch(fetchingCustomers());
+
+    const url = baseApiUrl + 'customers/search-by-company?searchTerm=' + searchTerm;
+    fetch(url)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch customers');
+        }
+        return response.json();
+      })
+      .then((customers) => dispatch(fetchedCustomers(customers)))
+      .catch((err) => {
+        console.log('Error fetching customers: ' + err.message);
+      });
+  };
+}
