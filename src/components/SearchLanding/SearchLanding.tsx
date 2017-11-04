@@ -1,49 +1,37 @@
 import * as React from 'react';
 import './SearchLanding.css';
-import SearchLandingResults from './SearchLandingResultsContainer';
+import SearchLandingResults from './SearchLandingResults';
 import Customer from '../../models/Customer';
 
-export interface SearchLandingState {
-  searchTerm: string;
-  searchResults: Customer[];
+export interface SearchLandingProps {
+  resultItems: Customer[];
+  fetchCustomersByCompany: (searchTerm: string) => void;
 }
 
-export default class SearchLanding extends React.Component<{
-  fetchCustomersByCompany: (searchTerm: string) => void,
-}, SearchLandingState> {
-  constructor() {
-    super();
-    this.state = {
-      searchTerm: '',
-      searchResults: [],
-    };
-  }
+const SearchLanding = (props: SearchLandingProps) => {
+  const fetchResults = (evt: React.MouseEvent<HTMLButtonElement>) => {
+    const searchInput = document.getElementsByClassName('search-landing--input')[0] as HTMLInputElement;
+    const searchTerm = searchInput.value;
 
-  render() {
-    return (
-      <div className="search-landing">
-        <img
-          className="search-image"
-          width="40px"
-          height="80px"
-          src={require('./magnifying-glass.svg')}
-          alt="Magnifying Glass"
-        />
-        <input type="text" onChange={this.onSearchChange} />
-        <SearchLandingResults />
+    props.fetchCustomersByCompany(searchTerm);
+  };
+
+  return (
+    <div className="search-landing">
+      <img
+        className="search-image"
+        width="40px"
+        height="80px"
+        src={require('./magnifying-glass.svg')}
+        alt="Magnifying Glass"
+      />
+      <input className="search-landing--input" type="text" />
+      <button className="search-landing--confirm" onClick={fetchResults}>Search</button>
+      <div className="search-landing--results">
+        <SearchLandingResults resultItems={props.resultItems}/>
       </div>
-    );
-  }
+    </div>
+  );
+};
 
-  private onSearchChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = evt.currentTarget.value;
-    this.setState({
-      searchTerm,
-    });
-    this.fetchResults(searchTerm);
-  }
-
-  private fetchResults(searchTerm: string) {
-    this.props.fetchCustomersByCompany(searchTerm);
-  }
-}
+export default SearchLanding;

@@ -1,6 +1,6 @@
 import { connect, Dispatch } from 'react-redux';
 import { StoreState } from '../../types';
-import { fetchCustomers, fetchCustomersByCompany } from '../../data/actions/customers';
+import { fetchCustomers } from '../../data/actions/customers';
 import { fetchOrders } from '../../data/actions/orders';
 import { fetchSamples } from '../../data/actions/samples';
 import { getCustomers, customersFetching } from '../../data/selectors/customers';
@@ -38,7 +38,6 @@ const mapStateToProps = (state: StoreState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<any>) => {
   return {
-    fetchCustomersByCompany: (searchTerm: string) => dispatch(fetchCustomersByCompany(searchTerm)),
     customerProps: {
       fetchData: () => dispatch(fetchCustomers())
     },
@@ -76,7 +75,6 @@ const mergeProps = (stateProps: any, dispatchProps: any, ownProps: any) => {
     orderProps,
     sampleProps,
     page: stateProps.page,
-    fetchCustomersByCompany: dispatchProps.fetchCustomersByCompany,
   };
 };
 

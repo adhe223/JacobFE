@@ -8,8 +8,20 @@
 
   position: absolute;
   margin: -40px 0 0 -300px;
-  top: 50%;
+  top: 30%;
   left: 50%;
+}
+
+.search-landing--input {
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+  align-self: center;
+  line-height: 40px;
+  font-size: 30px;
+  background-color: rgb(208, 208, 208);
+  border: none;
+  outline: none;
 }
 
 .search-image {
@@ -17,11 +29,16 @@
   padding-left: 20px;
 }
 
-.search-text {
-  width: 80%;
-  height: auto;
-  margin: 0 auto;
-  padding: 10px;
-  position: relative;
-  align-self: center;
+.search-landing--confirm {
+  float: right;
+}
+
+.search-landing--results {
+  max-height: 400px;
+  width: 550px;
+
+  position: absolute;
+  margin: -40px 0 0 -275px;
+  top: calc(30% + 80px);
+  left: 50%;
 }

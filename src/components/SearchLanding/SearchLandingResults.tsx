@@ -1,19 +1,20 @@
 import * as React from 'react';
 import Customer from '../../models/Customer';
+import './SearchLandingResults.css';
 
 const SearchLandingResults = (props: {
   resultItems: Customer[],
 }) => {
   const results = props.resultItems.map((result, index) => (
-    <div key={index} className="search-landing-results-item">
+    <li key={index} className="search-landing-results--item">
       {result.companyName}
-    </div>
+    </li>
   ));
 
   return (
-    <div className="search-landing-results">
+    <ul className="search-landing-results">
       {results}
-    </div>
+    </ul>
   );
 };
 

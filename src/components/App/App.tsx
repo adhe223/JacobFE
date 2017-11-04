@@ -6,7 +6,6 @@ import { Pages } from '../../constants';
 import SearchLanding from '../SearchLanding';
 
 export interface AppProps {
-  fetchCustomersByCompany: (searchTerm: string) => void;
   customerProps: DataPageProps;
   orderProps: DataPageProps;
   sampleProps: DataPageProps;
@@ -31,9 +30,7 @@ class App extends React.Component<AppProps> {
 
     return (
       <div className="App">
-        <SearchLanding
-          fetchCustomersByCompany={this.props.fetchCustomersByCompany}
-        />
+        <SearchLanding/>
       </div>
     );
   }
