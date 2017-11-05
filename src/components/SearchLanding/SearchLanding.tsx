@@ -6,6 +6,7 @@ import Customer from '../../models/Customer';
 export interface SearchLandingProps {
   resultItems: Customer[];
   fetchCustomersByCompany: (searchTerm: string) => void;
+  setCurrentCustomer: (customer: Customer) => void;
 }
 
 const SearchLanding = (props: SearchLandingProps) => {
@@ -28,7 +29,7 @@ const SearchLanding = (props: SearchLandingProps) => {
       <input className="search-landing--input" type="text" />
       <button className="search-landing--confirm" onClick={fetchResults}>Search</button>
       <div className="search-landing--results">
-        <SearchLandingResults resultItems={props.resultItems}/>
+        <SearchLandingResults resultItems={props.resultItems} onSelectCustomer={props.setCurrentCustomer}/>
       </div>
     </div>
   );

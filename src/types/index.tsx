@@ -10,6 +10,7 @@ export interface StoreState {
   customers: {
     listItems: Customer[],
     isFetching: boolean,
+    currentCustomer: Customer | null;
   };
   orders: {
     listItems: Order[],
