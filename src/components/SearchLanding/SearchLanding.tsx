@@ -17,6 +17,17 @@ const SearchLanding = (props: SearchLandingProps) => {
     props.fetchCustomersByCompany(searchTerm);
   };
 
+  const handleKeyUp = (evt: React.KeyboardEvent<HTMLInputElement>) => {
+    const searchTerm = evt.currentTarget.value;
+
+    switch (evt.key) {
+      case 'Enter':
+        props.fetchCustomersByCompany(searchTerm);
+        break;
+      default:
+    }
+  };
+
   return (
     <div className="search-landing">
       <img
@@ -26,8 +37,8 @@ const SearchLanding = (props: SearchLandingProps) => {
         src={require('./magnifying-glass.svg')}
         alt="Magnifying Glass"
       />
-      <input className="search-landing--input" type="text" />
-      <button className="search-landing--confirm" onClick={fetchResults}>Search</button>
+      <input className="search-landing--input" type="text" onKeyUp={handleKeyUp} />
+      <button className="search-landing--confirm" onClick={fetchResults}>Go!</button>
       <div className="search-landing--results">
         <SearchLandingResults resultItems={props.resultItems} onSelectCustomer={props.setCurrentCustomer}/>
       </div>

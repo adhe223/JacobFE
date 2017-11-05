@@ -1,19 +1,23 @@
 .search-landing-results {
   list-style-type: none;
   background-color: rgb(233, 233, 233);
+  border-radius: 0 0 8px 8px;
+  padding: 0;
 }
 
 .search-landing-results--item {
   padding: 12px;
-  width: 100%;
-  height: 100%;
   cursor: pointer;
 }
 
 .search-landing-results--item:hover {
-  filter: opacity(1);
+  filter: brightness(0.8);
 }
 
-.search-landing-results--item:not(:hover) {
-  filter: opacity(0.6);
+.search-landing-results--item.primary-bg {
+  background-color: rgb(233, 233, 233);
+}
+
+.search-landing-results--item.alt-bg {
+  background-color: rgb(198, 198, 198);
 }
