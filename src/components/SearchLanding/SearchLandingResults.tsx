@@ -12,11 +12,19 @@ const SearchLandingResults = (props: {
     props.onSelectCustomer(result);
   };
 
-  const results = props.resultItems.map((result, index) => (
-    <li key={index} className="search-landing-results--item" onClick={onSelect} data-result-index={index}>
-      {result.companyName}
-    </li>
-  ));
+  const results = props.resultItems.map((result, index) => {
+    const colorClass = (index % 2 === 1) ? 'alt-bg' : 'primary-bg';
+    return (
+      <li
+        key={index}
+        className={'search-landing-results--item ' + colorClass}
+        onClick={onSelect}
+        data-result-index={index}
+      >
+        {result.companyName}
+      </li>
+    );
+  });
 
   return (
     <ul className="search-landing-results">
