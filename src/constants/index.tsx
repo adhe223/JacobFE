@@ -20,9 +20,8 @@ export const FETCHED_SAMPLES = 'FETCHED_SAMPLES';
 export type FETCHED_SAMPLES = typeof FETCHED_SAMPLES;
 
 export enum Pages {
-  customers,
-  orders,
-  samples,
+  landingPage,
+  customerPage,
 }
 
 export const baseApiUrl: string = 'http://192.168.29.224:3000/';

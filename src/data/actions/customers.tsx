@@ -1,7 +1,8 @@
 import Customer from '../../models/Customer';
 import { FETCHING_CUSTOMERS, FETCHED_CUSTOMERS, SET_CURRENT_CUSTOMER } from '../../constants';
+import { setPage } from './app';
 import { Dispatch } from 'react-redux';
-import { baseApiUrl } from '../../constants';
+import { baseApiUrl, Pages } from '../../constants';
 
 export function fetchingCustomers() {
   return {
@@ -19,9 +20,13 @@ export function fetchedCustomers(customers: Customer[]) {
 }
 
 export function setCurrentCustomer(customer: Customer) {
-  return {
-    type: SET_CURRENT_CUSTOMER,
-    payload: {customer},
+  return (dispatch: Dispatch<any>): void => {
+    dispatch({
+      type: SET_CURRENT_CUSTOMER,
+      payload: {customer},
+    });
+
+    dispatch(setPage(Pages.customerPage));
   };
 }
 
