@@ -1,0 +1,47 @@
+.search-landing {
+  width: 600px;
+  height: 80px;
+  background-color: rgb(208, 208, 208);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+
+  position: absolute;
+  margin: -40px 0 0 -300px;
+  top: 30%;
+  left: 50%;
+}
+
+.search-landing--input {
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+  align-self: center;
+  line-height: 40px;
+  font-size: 30px;
+  background-color: rgb(208, 208, 208);
+  border: none;
+  outline: none;
+}
+
+.search-image {
+  float: left;
+  padding-left: 20px;
+}
+
+.search-landing--confirm {
+  float: right;
+  border-radius: 8px;
+  width: 10%;
+  outline: none;
+}
+
+.search-landing--results {
+  max-height: 400px;
+  width: 580px;
+
+  position: absolute;
+  margin: -40px 0 0 -290px;
+  top: calc(30% + 80px);
+  left: 50%;
+}

@@ -6,7 +6,7 @@ export interface AppState {
 }
 
 const initialState = {
-  page: Pages.customers,
+  page: Pages.landingPage,
 };
 
 export function app(state: AppState = initialState, action: PageAction): AppState {

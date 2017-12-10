@@ -1,6 +1,9 @@
 export const FETCHING_CUSTOMERS = 'FETCHING_CUSTOMERS';
 export type FETCHING_CUSTOMERS = typeof FETCHING_CUSTOMERS;
 
+export const SET_CURRENT_CUSTOMER = 'SET_CURRENT_CUSTOMER';
+export type SET_CURRENT_CUSTOMER = typeof SET_CURRENT_CUSTOMER;
+
 export const FETCHED_CUSTOMERS = 'FETCHED_CUSTOMERS';
 export type FETCHED_CUSTOMERS = typeof FETCHED_CUSTOMERS;
 
@@ -17,9 +20,8 @@ export const FETCHED_SAMPLES = 'FETCHED_SAMPLES';
 export type FETCHED_SAMPLES = typeof FETCHED_SAMPLES;
 
 export enum Pages {
-  customers,
-  orders,
-  samples,
+  landingPage,
+  customerPage,
 }
 
 export const baseApiUrl: string = 'http://192.168.29.224:3000/';
